@@ -8,7 +8,13 @@ const DEFAULT_PAGE_SIZE = 25
  */
 export default class FetchingDataOptionsService {
   static call(options) {
-    let result = `${this.pagenate(options)}${this.sort(options)}${this.filter(options)}${this.search(options)}`
+    let result = ''
+
+    result += this.pagenate(options)
+    result += this.sort(options)
+    result += this.filter(options)
+    result += this.search(options)
+    result += this.tag(options)
 
     if (result[0] === '&') {
       result = result.substr(1)
@@ -91,5 +97,18 @@ export default class FetchingDataOptionsService {
 
     return result
 
+  }
+
+  /**
+   * 處理Tag搜尋選項
+   *
+   * @static
+   * @param {Object} options
+   * @returns {string}
+   */
+  static tag(options) {
+    if (!options.tag) return ''
+
+    return `&tag=${options.tag}`
   }
 }
