@@ -84,7 +84,13 @@ export default class FetchingDataOptionsService {
     let result = ''
 
     keys.forEach(element => {
-      if (options.search[element]) {
+      if (!options.search[element]) return
+
+      if (options.search[element] instanceof Array) {
+        options.search[element].forEach(function (searchOption) {
+          result += `&q[${element}][]=${searchOption}`
+        })
+      } else {
         result += `&q[${element}]=${options.search[element]}`
       }
     })
