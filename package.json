@@ -1,6 +1,6 @@
 {
   "name": "odd-fetching_data_options_service",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "create policy user model from JWT payload",
   "main": "lib/odd-fetching_data_options_service.js",
   "scripts": {

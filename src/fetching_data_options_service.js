@@ -28,7 +28,9 @@ export default class FetchingDataOptionsService {
     let pageNumber = options.pageNumber
     let pageSize = options.pageSize || DEFAULT_PAGE_SIZE
 
-    if (pageNumber) {
+    if (typeof pageNumber === 'number') {
+      pageNumber = pageNumber || 1
+
       return `page[number]=${pageNumber}&page[size]=${pageSize}`
     }
     return ''
